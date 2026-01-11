@@ -31,7 +31,7 @@ export class ConfigService {
     this.endpoints = {
       auth: base + cfg.backend.endpoints.auth,
       users: base + cfg.backend.endpoints.users,
-      orders: base + cfg.backend.endpoints.orders
+      applications: base + cfg.backend.endpoints.applications
     };
   }
 
