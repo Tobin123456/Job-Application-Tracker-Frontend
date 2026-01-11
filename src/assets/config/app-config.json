@@ -1,0 +1,10 @@
+{
+  "backend": {
+    "baseUrl": "http://localhost:8080",
+    "endpoints": {
+      "auth": "/api/auth",
+      "users": "/api/users",
+      "orders": "/api/applications"
+    }
+  }
+}
