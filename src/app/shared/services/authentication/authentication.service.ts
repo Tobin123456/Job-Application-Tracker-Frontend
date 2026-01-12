@@ -11,13 +11,12 @@ import { ConfigService } from '../config/config.service';
 })
 export class AuthenticationService {
 
-
   constructor(
     private configService: ConfigService,
     private restService: RestService,
     private storageService: StorageService,
     private router: Router
-  ) {}
+  ) { }
 
   /** Authenticate — subscribes to POST, saves token, redirects */
   authenticate(username: string, password: string): void {

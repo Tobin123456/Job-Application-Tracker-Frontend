@@ -4,7 +4,7 @@
     "endpoints": {
       "auth": "/api/auth",
       "users": "/api/users",
-      "orders": "/api/applications"
+      "applications": "/api/applications"
     }
   }
 }
