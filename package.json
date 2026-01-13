@@ -1,5 +1,5 @@
 {
-  "name": "applicaton-tracker-frontend",
+  "name": "application-tracker-frontend",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

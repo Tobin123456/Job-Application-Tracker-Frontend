@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "applicaton_tracker_frontend": {
+    "application_tracker_frontend": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -58,10 +58,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "applicaton_tracker_frontend:build:production"
+              "buildTarget": "application_tracker_frontend:build:production"
             },
             "development": {
-              "buildTarget": "applicaton_tracker_frontend:build:development"
+              "buildTarget": "application_tracker_frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
