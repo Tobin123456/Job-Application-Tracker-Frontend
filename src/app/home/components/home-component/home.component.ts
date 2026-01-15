@@ -14,8 +14,11 @@ import { Application } from '../../model/Application';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+
   applications = signal<Application[]>([]);
+
   statuses: ApplicationStatus[] = Object.values(ApplicationStatus); // enum values for dropdown
+  
   headers = [
     { name: 'Company' },
     { name: 'Job Title' },

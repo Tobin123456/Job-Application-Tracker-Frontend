@@ -46,6 +46,6 @@ export class AuthenticationService {
   }
 
   isLoggedIn(): boolean {
-    return this.storageService.getToken != null;
+    return this.getToken() != null;
   }
 }
