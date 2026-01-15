@@ -16,7 +16,12 @@ export class ApplicationService {
     return firstValueFrom(this.restService.get<Application[]>(this.configService.configEndpointsFullURL.applications));
   }
 
-  // Update application
+  // Create a application
+  createApplication(application: Application): Promise<void> {
+    return firstValueFrom(this.restService.post<void>(this.configService.configEndpointsFullURL.applications, application));
+  }
+
+  // Update a application
   updateStatus(applicationId: number, status: string): Promise<void> {
     return firstValueFrom(this.restService.patch<void>(`${this.configService.configEndpointsFullURL.applications}/${applicationId}/status`, { status }));
   }

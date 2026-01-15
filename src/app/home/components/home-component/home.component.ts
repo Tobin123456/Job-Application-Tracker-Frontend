@@ -16,9 +16,8 @@ import { Application } from '../../model/Application';
 export class HomeComponent implements OnInit {
 
   applications = signal<Application[]>([]);
+  statuses: ApplicationStatus[] = Object.values(ApplicationStatus);
 
-  statuses: ApplicationStatus[] = Object.values(ApplicationStatus); // enum values for dropdown
-  
   headers = [
     { name: 'Company' },
     { name: 'Job Title' },
@@ -26,14 +25,19 @@ export class HomeComponent implements OnInit {
     { name: 'Link' },
   ];
 
+  newApplication: Application= {
+    companyName: '',
+    jobTitle: '',
+    jobUrl: '',
+    status: ApplicationStatus.APPLIED
+  };
 
-  constructor(private applicationService: ApplicationService) {
-  }
+  constructor(private applicationService: ApplicationService) { }
 
   async ngOnInit() {
     try {
       const apps = await this.applicationService.getApplications();
-      this.applications.set(apps); // @for updates automatically
+      this.applications.set(apps);
     } catch (err) {
       console.error('Failed to load applications', err);
     }
@@ -47,4 +51,34 @@ export class HomeComponent implements OnInit {
       })
       .catch(err => console.error('Failed to update status', err));
   }
+
+  addApplication() {
+    if (
+      !this.newApplication.companyName ||
+      !this.newApplication.jobTitle ||
+      !this.newApplication.jobUrl
+    ) {
+      console.error('Failed to create application, not all data is set');
+      return;
+    }
+
+    this.applicationService
+      .createApplication(this.newApplication as Application)
+      .then(() => {
+        this.applications.update(apps => {
+          return apps.concat(this.newApplication);
+        });
+        this.newApplication = {
+          appID: 0,
+          companyName: '',
+          jobTitle: '',
+          jobUrl: '',
+          status: ApplicationStatus.APPLIED
+        };
+      })
+      .catch(err => {
+        console.error('Failed to create application', err);
+      });
+  }
+
 }

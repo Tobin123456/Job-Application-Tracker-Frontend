@@ -1,7 +1,7 @@
 import { ApplicationStatus } from "./ApplicationStatus";
 
 export interface Application {
-  appID: number;
+  appID?: number;
   jobTitle: string;
   companyName: string;
   status: ApplicationStatus;

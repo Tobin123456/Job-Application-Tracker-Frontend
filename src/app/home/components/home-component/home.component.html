@@ -1,6 +1,39 @@
 <div class="container mt-4">
   <h2>Company Applications</h2>
 
+  
+
+  <!-- Add Application Form -->
+  <div class="card mb-3 p-3">
+    <h5>Add New Application</h5>
+    <form (ngSubmit)="addApplication()" #appForm="ngForm">
+      <div class="row g-2 align-items-end">
+        <div class="col-md-3">
+          <label for="companyName" class="form-label">Company</label>
+          <input type="text" id="companyName" class="form-control" [(ngModel)]="newApplication.companyName" name="companyName" required>
+        </div>
+        <div class="col-md-3">
+          <label for="jobTitle" class="form-label">Job Title</label>
+          <input type="text" id="jobTitle" class="form-control" [(ngModel)]="newApplication.jobTitle" name="jobTitle" required>
+        </div>
+        <div class="col-md-3">
+          <label for="jobUrl" class="form-label">Job URL</label>
+          <input type="url" id="jobUrl" class="form-control" [(ngModel)]="newApplication.jobUrl" name="jobUrl">
+        </div>
+        <div class="col-md-2">
+          <label for="status" class="form-label">Status</label>
+          <select class="form-select" id="status" [(ngModel)]="newApplication.status" name="status">
+            <option *ngFor="let s of statuses" [value]="s">{{ s }}</option>
+          </select>
+        </div>
+        <div class="col-md-1">
+          <button class="btn btn-success w-100" type="submit">Add</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
   <table class="table table-striped table-hover">
     <thead class="table-dark">
       <tr>
@@ -18,7 +51,7 @@
         <td>{{ application.jobTitle }}</td>
         <td>
           <select class="form-select" [ngModel]="application.status"
-            (ngModelChange)="onStatusChange(application.appID, $event)">
+            (ngModelChange)="application.appID && onStatusChange(application.appID, $event)">
             @for (status of statuses; track status) {
             <option [value]="status">{{ status }}</option>
             }
